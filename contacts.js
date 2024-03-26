@@ -33,7 +33,7 @@ export async function removeContact(contactId) {
         return null;
     }
     const updateContacts = contacts.filter((item) => item.id !== delContact.id);
-    await fs.writeFile(contactsPath, JSON.stringify(updateContacts, null, 2));
+    await fs.writeFile(contactsPath, JSON.stringify(updateContacts));
 
     return delContact;
   } catch (err) {
@@ -52,7 +52,7 @@ export async function addContact(name, email, phone) {
       phone,
     };
     contacts.push(newContact);
-    await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+    await fs.writeFile(contactsPath, JSON.stringify(contacts));
 
     return newContact;
   } catch (err) {
